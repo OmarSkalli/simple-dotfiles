@@ -4,7 +4,6 @@ Minimal dotfile for use in a server environment.
 
 To install:
 
-```
-./src/install.sh
-stow bash
+```bash
+curl -fsSL https://raw.githubusercontent.com/OmarSkalli/simple-dotfiles/main/install.sh | bash
 ```

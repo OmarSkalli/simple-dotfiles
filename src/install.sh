@@ -38,7 +38,27 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTFILES_DIR="$SCRIPT_DIR"
 TARGET_DIR="$HOME/.dotfiles"
 
-# Check if we need to move dotfiles to ~/.dotfiles
+# Check if we're running from a complete repo or just the standalone script
+if [ ! -d "$SCRIPT_DIR/bash" ]; then
+  echo "Downloading dotfiles repository..."
+  # We're running standalone (via curl), need to clone the repo
+  if [ -d "$TARGET_DIR" ]; then
+    echo "Directory $TARGET_DIR already exists and will be replaced."
+    read -p "Continue? (Y/n): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Nn]$ ]]; then
+      echo "Installation cancelled."
+      exit 1
+    fi
+    rm -rf "$TARGET_DIR"
+  fi
+  
+  git clone https://github.com/OmarSkalli/simple-dotfiles.git "$TARGET_DIR"
+  DOTFILES_DIR="$TARGET_DIR"
+  echo "Repository cloned to $TARGET_DIR"
+fi
+
+# Check if we need to move dotfiles to ~/.dotfiles (only if not already cloned there)
 if [ "$DOTFILES_DIR" != "$TARGET_DIR" ]; then
   echo "Current location: $DOTFILES_DIR"
   echo "Target location: $TARGET_DIR"
