@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Initialize zoxide
+eval "$(zoxide init bash)"
+
 # Git log
 alias log="git log --graph --pretty=format:'%Cred%h%Creset %C(cyan)%an%Creset -%C(blue)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 

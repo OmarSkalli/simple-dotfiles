@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Initialize zoxide
+eval "$(zoxide init bash)"

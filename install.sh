@@ -86,10 +86,18 @@ fi
 # Setup dotfiles
 echo "Setting up dotfiles..."
 cd "$DOTFILES_DIR"
-stow bash
 
-echo "Installation complete."
-echo "Restart your shell or run 'source ~/.bashrc' to apply changes."
+# Check for existing files that would conflict with stow and backup them
+if [ -f "$HOME/.bashrc" ] && [ ! -L "$HOME/.bashrc" ]; then
+  mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
+  echo "Backed up existing .bashrc to .bashrc.bak"
+fi
+if [ -f "$HOME/.bash_profile" ] && [ ! -L "$HOME/.bash_profile" ]; then
+  mv "$HOME/.bash_profile" "$HOME/.bash_profile.bak"
+  echo "Backed up existing .bash_profile to .bash_profile.bak"
+fi
+
+stow bash
 
 # Source new config
 source ~/.bashrc
