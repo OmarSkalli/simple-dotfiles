@@ -70,3 +70,6 @@ stow bash
 
 echo "Installation complete."
 echo "Restart your shell or run 'source ~/.bashrc' to apply changes."
+
+# Source new config
+source ~/.bashrc
