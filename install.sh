@@ -31,7 +31,7 @@ echo "Updating package lists..."
 $SUDO apt update
 
 echo "Installing packages..."
-$SUDO apt install -y stow fzf git zoxide unzip curl
+$SUDO apt install -y stow fzf git zoxide unzip curl neovim
 
 # Get the directory where the script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

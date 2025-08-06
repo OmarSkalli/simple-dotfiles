@@ -40,8 +40,8 @@ if tput setaf 1 &> /dev/null; then
 	bold=$(tput bold);
 	reset=$(tput sgr0);
 	black=$(tput setaf 0);
-	blue=$(tput setaf 33);
-	cyan=$(tput setaf 37);
+	blue=$(tput setaf 4);
+	cyan=$(tput setaf 6);
 	green=$(tput setaf 2);
 	orange=$(tput setaf 3);
 	purple=$(tput setaf 5);
@@ -86,8 +86,8 @@ PS1+="\[${userStyle}\]\u@"; # username
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${reset}\] \[${blue}\]\w"; # working directory full path
 
-PS1+="\$(prompt_git \"\[${white}\]\[${green}\]\" \"\[${red}\]\")"; # Git repository details
-PS1+="\[${white}\] \$ \[${reset}\]"; # `$` (and reset color)
+PS1+="\$(prompt_git \"\[${reset}\]\[${green}\]\" \"\[${reset}\]\[${red}\]\")"; # Git repository details
+PS1+="\[${reset}\] \$ "; # `$` (and reset color)
 export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
