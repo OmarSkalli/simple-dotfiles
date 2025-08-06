@@ -99,5 +99,5 @@ fi
 
 stow bash
 
-# Source new config
-source ~/.bashrc
+echo "Installation complete."
+echo "Run 'source ~/.bashrc' or restart your shell to apply changes."
